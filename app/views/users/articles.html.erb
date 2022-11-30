@@ -1,0 +1,37 @@
+
+<script>
+$.ajax({
+  url: `/users/${'<%= @user_id %>'}/articles`,
+  type: "GET",
+  success: function (data) {
+      console.log(data);
+      data.forEach(myFunction);
+      function myFunction(value){
+                    $("#selector").find(
+                      ".c2"
+                    ).append(`<eng-article-card class="rohit" name="Article" id="${value.article_id}" titles="${value.title}" content="${value.description}">
+                            <div class="eng-article-datafield">
+                          <h3>{{titles}}</h3>
+                          <label class="datafield content-a">{{content}}</label>
+                          </div>
+                          </eng-article-card>
+                          `);
+      }
+  },
+  error: function (error) {
+      console.log(`Error ${error}`);
+  }
+});
+</script>
+<div id="user_id" style="display:none;"><%=@user_id%></div>
+<eng-uni-card card-title="Article">
+                <div id="user_id" style= "display:none;" ><%= @user_id %></div>
+               <eng-selector  id="selector">
+                <div class="c1">
+                  <eng-article-card id="creation" name="Article 1" placeholder="Enter content" type="input"></eng-article-card>
+                </div>
+                <div class="c2">
+               
+                 </div>
+                </eng-selector>
+</eng-uni-card>

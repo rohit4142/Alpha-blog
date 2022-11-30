@@ -1,0 +1,29 @@
+
+<eng-uni-card card-title="Article">
+               <eng-selector  id="selector">
+                <div class="c1">
+                  <eng-article-card id="creation" name="Article 1" placeholder="Enter content" type="input"></eng-article-card>
+                </div>
+                <div class="c2">
+                  <%# <eng-article-card name="Article" titles="First Article" content="First aaaaaaArticle"></eng-article-card>
+                  <eng-article-card name="Article" titles="First Article" content="First aaaaaaArticle"></eng-article-card>
+                  <eng-article-card name="Article" titles="First Article" content="First Article"></eng-article-card>
+                  <eng-article-card name="Article" titles="First Article" content="First Article"></eng-article-card>
+                  <eng-article-card name="Article" titles="First Article" content="First Article"></eng-article-card>
+                  <eng-article-card name="Article" titles="First Article" content="First Article"></eng-article-card> %>
+                   <% @user.articles.each do |a|%>
+                    <script>
+                    $("#selector").find(
+                      ".c2"
+                    ).append(`<eng-article-card name="Article" titles="<%= a.title %>" content="<%= a.description %>">
+                            <div class="eng-article-datafield">
+                          <h3>{{titles}}</h3>
+                          <label class="datafield content-a">{{content}}</label>
+                          </div>
+                          </eng-article-card>
+                          `);
+                    </script>
+                    <% end %>
+                 </div>
+                </eng-selector>
+</eng-uni-card>

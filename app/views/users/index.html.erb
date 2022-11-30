@@ -1,0 +1,7 @@
+<% @users.each do |user| %>
+
+ <div>
+ <%= link_to user.username, controller: "articles", action: "index", user_id: user.user_id %>
+ <%= link_to user.username, controller: "users", action: "articles", user_id: user.user_id %>
+ </div>
+ <% end %>
